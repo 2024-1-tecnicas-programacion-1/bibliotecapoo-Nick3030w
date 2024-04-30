@@ -1,30 +1,84 @@
 package com.mycompany.bibliotecapoo;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class Biblioteca {
-    private LinkedList<String> libros;
-    Scanner lector = new Scanner(System.in);
-    
-    
-    public void registrarLibro(){
-        libros.add(Libro);
+
+    private LinkedList<Libro> libros;
+/**
+ * 
+ * Complejidad temporal: O(1) Tiempo constante
+ */
+    public Biblioteca() {
+        this.libros = new LinkedList<>();
     }
-    
-    public String buscarLibro(){
-        String palabraBusqueda = lector.next();
-        return libros.get(palabraBusqueda);
+/**
+ * metodo que registra un libro
+ * Complejidad temporal: O(1) Tiempo constante
+ * @param libroNuevo
+ */
+    public void registrarLibro(Libro libroNuevo) {
+        libros.add(libroNuevo);
+        
     }
-    
-    void mostrarLibros(){
-        for(int i = 0; i < libros.size(); i++) {
-            System.out.println(libros.get(i));
-        }
-    }
-    void mostrarLibrosNoLeidos(){
-        if(Libro.marcarLeido = false){
+/**
+ * metodo que busca un libro
+ * Complejidad temporal: O(1) Tiempo constante
+     * @param palabraBusqueda
+ */
+    public void buscarLibro(String palabraBusqueda) {
+        for (int i = 0; i < libros.size(); i++) {
+            Libro libroLeido = libros.get(i);
+
+            
+            if (libroLeido.getTitulo().equals(palabraBusqueda) || libroLeido.getAutor().equals(palabraBusqueda) || libroLeido.getGenero().equals(palabraBusqueda)) {
+                System.out.println(libroLeido.mostrarInfo());
+
+            }
             
         }
     }
+/**
+ * metodo que muestra un libro
+ * Complejidad temporal: O(1) Tiempo constante
+ */
+    public void mostrarLibros() {
+        for (Libro libro : libros) {
+            
+            System.out.println(libro.mostrarInfo());
+        }
+    }
+/**
+ * metodo que muestra un libro no leido, o los libros no leidos
+ * Complejidad temporal: O(1) Tiempo constante
+ */
+    public void mostrarLibrosNoLeidos() {
 
+        boolean libNoLeidos = false;
+
+        for (Libro libro : libros) {
+            if (!libro.isLeido()) {
+                if (!libNoLeidos) {
+                    System.out.println("Libros no leídos en la biblioteca:");
+                    libNoLeidos = true;
+                }
+                
+                System.out.println(libro.mostrarInfo());
+                
+            }
+        }
+    }
+    /**
+     * metodo que marca el libro no leido
+     * Complejidad temporal: O(1) Tiempo constante
+     * @param tituloLibro 
+     */
+    public void marcarLibroNoLeido(String tituloLibro) {
+    for (Libro libro : libros) {
+        
+        if (libro.getTitulo().equalsIgnoreCase(tituloLibro)) {
+            libro.marcarLeido(); // Llama al método marcarNoLeido() en la clase Libro
+            return; // Sal del método después de marcar el libro
+        }
+    }
+}
 }

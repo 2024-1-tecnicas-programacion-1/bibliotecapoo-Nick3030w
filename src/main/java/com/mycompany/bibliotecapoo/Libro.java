@@ -1,5 +1,4 @@
-package com.mycompany.bibliotecaPOO;
-
+package com.mycompany.bibliotecapoo;
 public class Libro {
     private String titulo;
     private String autor;
@@ -15,7 +14,7 @@ public class Libro {
      * @param anoPublicacion
      * @param leido 
      */
-    public Libro(String titulo, String autor, String genero, int anoPublicacion, Boolean leido){
+    public Libro(String titulo, String autor, int anoPublicacion, String genero){
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
@@ -32,7 +31,8 @@ public class Libro {
     }
     /**
      * metodo que marca el libro como leido
-     * complejidad temporal: 0(1) complejidad constante 
+     * complejidad temporal: 0(1) complejidad constante
+     * @return 
      */
     public void marcarLeido(){
         this.leido=true;
@@ -49,18 +49,16 @@ public class Libro {
         }
     return false;
     }
-    /**
-     *Metodo que retorna si el libro esta leido
-     * complejidad temporarl: 0(1) complejidad constante
-     * @return 
-     */
 
     public boolean isLeido() {
         return leido;
     }
+
+    Object getTitulo() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
     
     
     
     }
-
